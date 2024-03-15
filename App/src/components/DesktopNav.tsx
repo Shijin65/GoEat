@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import AuthuserMenu from "./AuthuserMenu";
 
 const DesktopNav = () => {
-  const { loginWithRedirect, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, isAuthenticated} = useAuth0();
   return (
     <span>
       {isAuthenticated ? (
