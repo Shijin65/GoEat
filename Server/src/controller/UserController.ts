@@ -21,6 +21,13 @@ const CreateCurrentUser = async (req: Request, res: Response) => {
     res.status(500).json({ message: "An error occurred when creating user" });
   }
 };
+const UpdateCurrentUser=async(req: Request, res: Response)=>{
+  try {
+    
+  } catch (error) {
+    res.sendStatus(401).json({message:"Not able to update contact"})
+  }
+}
 export default {
-  CreateCurrentUser,
+  CreateCurrentUser,UpdateCurrentUser
 };
