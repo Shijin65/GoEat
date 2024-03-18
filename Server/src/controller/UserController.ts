@@ -41,7 +41,22 @@ const UpdateCurrentUser = async (req: Request, res: Response) => {
     res.sendStatus(401).json({ message: "Not able to update contact" });
   }
 };
+
+const GetCurrentUser =async(req:Request ,res:Response)=>{
+  try {
+   const Currentuser =await User.findById({_id:req.userId})
+   if(!Currentuser){
+      return res.status(404).json({message:"User Not Found"})
+   }
+   res.json(Currentuser)
+  } catch (error) {
+    console.log(error);
+    throw new Error("Can't Get User")
+  }
+}
+
 export default {
+  GetCurrentUser,
   CreateCurrentUser,
   UpdateCurrentUser,
 };

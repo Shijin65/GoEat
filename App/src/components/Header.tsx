@@ -7,7 +7,9 @@ export default function Header() {
     <div className="border-b-2 border-b-orange-500 py-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex md:flex-col items-center justify-center">
-          <img src={logo} alt="" className="h-14"/>
+          <Link to={"/"}>
+            <img src={logo} alt="" className="h-14" />
+          </Link>
           <Link
             to={"/"}
             className="text-3xl font-bold tracking-tight text-orange-500"

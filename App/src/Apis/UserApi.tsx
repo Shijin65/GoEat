@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { toast } from "sonner";
 
 
@@ -70,9 +70,34 @@ export const UseUpdateUser = () => {
   }
 
   if (error){
-    toast.error("error occered")
+    toast.error("error occered");
+    reset()
   }
 
   return { updateuser,isLoading}
 };
+
+export const UseGetCurrentUser=()=>{
+   const {getAccessTokenSilently}=useAuth0()
+    const GetCurrentUserRequest =async()=>{
+      const AccessToken = await getAccessTokenSilently()
+      const responce= await fetch(`${API_BASE_URL}/api/my/user`,{
+        method:"GET",
+        headers:{
+          Authorization:`Bearer ${AccessToken}`,
+          "Content-Type": "application/json",
+        }
+      })
+      if(!responce.ok){
+        throw new Error("User Not Found")
+      }
+      return responce.json();
+    }
+
+    const {data:currentUser,isLoading,error}=useQuery("fetch current user",GetCurrentUserRequest);
+    if(error){
+      toast.error(error.toString())
+    }
+    return {currentUser ,isLoading}
+}
 
