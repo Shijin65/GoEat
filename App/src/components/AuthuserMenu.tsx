@@ -10,6 +10,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
+import { Link } from "react-router-dom";
 
 const AuthuserMenu = () => {
   const { user,logout } = useAuth0();
@@ -34,7 +35,7 @@ const AuthuserMenu = () => {
         </DropdownMenuGroup>
 
         <DropdownMenuGroup className="mt-5 p-5">
-          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <Link to={"/user-profile"}><DropdownMenuItem>Profile</DropdownMenuItem></Link>
           <DropdownMenuItem>
             Settings
             <DropdownMenuShortcut>⇧⌘S</DropdownMenuShortcut>

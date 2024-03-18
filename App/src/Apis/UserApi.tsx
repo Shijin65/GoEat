@@ -1,5 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation } from "react-query";
+import { toast } from "sonner";
+
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 type createuserrequest = {
@@ -12,12 +14,14 @@ export const UseCreateUser = () => {
     const auth0Token = await getAccessTokenSilently();
     const responce = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "POST",
-      headers: { 
-        Authorization:`bearer ${auth0Token}`,"Content-Type": "application/json" },
+      headers: {
+        Authorization: `bearer ${auth0Token}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(user),
     });
     if (responce.status === 201) {
-      alert("user created succesfully");
+      toast("user created successfuly")
     }
     if (!responce.ok) {
       throw new Error("failed to create user");
@@ -32,3 +36,43 @@ export const UseCreateUser = () => {
 
   return { CreateUser, isLoading, isSuccess, isError };
 };
+type UpdateUserRequest ={
+  name: string;
+    address1: string;
+    city: string;
+    country: string;
+}
+export const UseUpdateUser = () => {
+  const { getAccessTokenSilently } = useAuth0();
+
+  const UpdateUserRequest = async (FormData: UpdateUserRequest) => {
+    const AccessToken = await getAccessTokenSilently();
+    const responce = await fetch(`${API_BASE_URL}/api/my/user`, {
+      method: "PUT",
+      headers: { Authorization: `Bearer ${AccessToken}`,
+      "Content-Type": "application/json",
+    },
+    body:JSON.stringify(FormData)
+    });
+    if(!responce.ok){
+      throw new Error("failed to update user")
+    }else{
+      
+    }
+
+  };
+
+
+  const {mutateAsync:updateuser,isLoading,error,isSuccess,reset }=useMutation(UpdateUserRequest);
+
+  if(isSuccess){
+    toast.success("updated user successfuly")
+  }
+
+  if (error){
+    toast.error("error occered")
+  }
+
+  return { updateuser,isLoading}
+};
+

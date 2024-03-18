@@ -5,7 +5,7 @@ const CreateCurrentUser = async (req: Request, res: Response) => {
   try {
     // 1.check weather the user existes
     const { auth0Id } = req.body;
-    const userexist = await User.findOne({auth0Id});
+    const userexist = await User.findOne({ auth0Id });
     if (userexist) {
       return res.status(200).send();
     }
@@ -15,19 +15,33 @@ const CreateCurrentUser = async (req: Request, res: Response) => {
     await newuser.save();
     //3.return the user object to client
     res.status(201).json(newuser.toObject());
-    console.log(newuser)
+    console.log(newuser);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "An error occurred when creating user" });
   }
 };
-const UpdateCurrentUser=async(req: Request, res: Response)=>{
+const UpdateCurrentUser = async (req: Request, res: Response) => {
   try {
+    const { name, address1, city, country } = req.body;
+    const user = await User.findById(req.userId);
+
+    if (!user) {
+      return res.status(401).json({ message: "user not found" });
+    }
+
+    user.name = name;
+    user.address1 = address1;
+    user.city = city;
+    user.country = country;
+    await user.save();
+    res.send(user);
     
   } catch (error) {
-    res.sendStatus(401).json({message:"Not able to update contact"})
+    res.sendStatus(401).json({ message: "Not able to update contact" });
   }
-}
+};
 export default {
-  CreateCurrentUser,UpdateCurrentUser
+  CreateCurrentUser,
+  UpdateCurrentUser,
 };

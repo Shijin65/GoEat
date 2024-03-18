@@ -4,7 +4,9 @@ import { SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
 import { Button } from "./ui/button";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Separator } from "./ui/separator";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 const MobAuthusermenu = () => {
+  const navigate= useNavigate()
     const {  user ,logout } = useAuth0();
   return (
     <SheetContent className="flex flex-col justify-between">
@@ -17,7 +19,7 @@ const MobAuthusermenu = () => {
           <AvatarFallback>{user?.name?.match(/\b(\w)/g)}</AvatarFallback>
         </Avatar>
         <SheetTitle className="text-center self-center text-lg font-medium tracking-tight">{`Hi,${user?.name}!`}</SheetTitle>
-        <Button className="bg-orange-500 ">Profile</Button>
+        <Link to="/user-profile"><Button className="bg-orange-500 " >Profile</Button></Link>
       </SheetHeader>
 
       <SheetHeader className="mt-5 p-5 ">

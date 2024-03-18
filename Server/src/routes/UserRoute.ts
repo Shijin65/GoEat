@@ -1,9 +1,10 @@
 import express from 'express'
 import UserController from '../controller/UserController'
-import { jwtCheck } from '../middlewear/auth'
+import { jwtCheck, jwtparse } from '../middlewear/auth'
+import { validatemyuserrequest } from '../middlewear/validation'
 const router = express.Router()
 
 router.post("/",jwtCheck, UserController.CreateCurrentUser)
-router.put("/",jwtCheck, UserController.UpdateCurrentUser)
+router.put("/",jwtCheck,jwtparse,validatemyuserrequest, UserController.UpdateCurrentUser)
 
 export default router

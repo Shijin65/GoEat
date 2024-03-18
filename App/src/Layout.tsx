@@ -5,12 +5,13 @@ import Footer from './components/Footer';
 
 type Props={
     children:React.ReactNode;
+    hero?:boolean
 }
-const Layout = ({children}:Props) => {
+const Layout = ({children , hero=false }:Props) => {
   return (
     <div className='flex flex-col min-h-screen'>
         <Header/>
-        <Hero/>
+        {hero?<Hero/>:""}
         <div className='container mx-auto flex-1 py-10'>{children}</div>
         <Footer/>
     </div>
