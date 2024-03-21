@@ -36,6 +36,7 @@ const AuthuserMenu = () => {
 
         <DropdownMenuGroup className="mt-5 p-5">
           <Link to={"/user-profile"}><DropdownMenuItem>Profile</DropdownMenuItem></Link>
+          <Link to={"/Manage-Restaurant"}><DropdownMenuItem>Manage Restaurant</DropdownMenuItem></Link>
           <DropdownMenuItem>
             Settings
             <DropdownMenuShortcut>⇧⌘S</DropdownMenuShortcut>

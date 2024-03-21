@@ -10,7 +10,7 @@ const MobAuthusermenu = () => {
     const {  user ,logout } = useAuth0();
   return (
     <SheetContent className="flex flex-col justify-between">
-      <SheetHeader className="flex flex-col mt-2 ">
+      <SheetHeader className="flex flex-col mt-2 justify-center items-center">
         <SheetTitle className="text-center self-center">
           {user?.email}
         </SheetTitle>
@@ -19,10 +19,11 @@ const MobAuthusermenu = () => {
           <AvatarFallback>{user?.name?.match(/\b(\w)/g)}</AvatarFallback>
         </Avatar>
         <SheetTitle className="text-center self-center text-lg font-medium tracking-tight">{`Hi,${user?.name}!`}</SheetTitle>
-        <Link to="/user-profile"><Button className="bg-orange-500 " >Profile</Button></Link>
+        <Link to="/user-profile"><Button className="bg-orange-500 self-center text-center" >Profile</Button></Link>
       </SheetHeader>
 
       <SheetHeader className="mt-5 p-5 ">
+      <Link to="/manage-restaurant"><Button className="hover:bg-orange-500">Manage Restaurant</Button></Link>
         <Button className="hover:bg-orange-500 ">Settings</Button>
         <Separator className="my-2" />
         <Button className="hover:bg-orange-500 " onClick={() => logout()}>
