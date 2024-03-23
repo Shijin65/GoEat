@@ -58,6 +58,9 @@ const ManageRestaurantForm = ({ onsave, isloding }: Props) => {
         <CuisinSection/>
         <Separator className="my-2"/>
         <MenuItemSection/>
+        <Separator className="my-2"/>
+        <ImageSection/>
+
       </form>
     </Form>
   );

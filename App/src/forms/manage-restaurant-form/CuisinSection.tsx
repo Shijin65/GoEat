@@ -8,7 +8,9 @@ import {
 } from "@/components/ui/form";
 import { cuisineList } from "@/config/Restaurant-options-config";
 import { useFormContext } from "react-hook-form";
+
 import CuisinCheckbox from "./CuisinCheckbox";
+
 
 const CuisinSection = () => {
   const { control } = useFormContext();
