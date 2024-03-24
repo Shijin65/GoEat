@@ -7,7 +7,7 @@ const MenuItemSection = () => {
   const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "menuItems",
+    name: "menuItem",
   });
   return (
     <div className="space-y-2">
@@ -25,7 +25,7 @@ const MenuItemSection = () => {
             {fields.map((_, index) => (
               <MenuItemInput
                 index={index}
-                removeMenuItem={() => remove(index)}
+                removeMenuItem={()=>{remove(index)}}
               />
             ))}
           </FormItem>

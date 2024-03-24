@@ -100,4 +100,3 @@ export const UseGetCurrentUser=()=>{
     }
     return {currentUser ,isLoading}
 }
-

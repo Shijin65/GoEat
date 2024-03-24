@@ -29,6 +29,7 @@ const CuisinSection = () => {
             {cuisineList.map((cuisinItem) => (
               <CuisinCheckbox cuisin={cuisinItem} field={field} />
             ))}
+            <FormMessage/>
           </FormItem>
         )}
       />

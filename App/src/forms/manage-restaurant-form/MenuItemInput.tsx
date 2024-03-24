@@ -17,16 +17,16 @@ type Props = {
 
 const MenuItemInput = ({ index, removeMenuItem }: Props) => {
   const { control } = useFormContext();
-  console.log(index)
+
   return (
     <div className="flex flex-row items-end gap-4">
       <FormField
         control={control}
-        name={`MenuItem.${index}.name`}
+        name={`menuItem.${index}.dishname`}
         render={({field}) => (
           <FormItem>
             <FormLabel className="flex items-center gap-1">
-              Name <FormMessage />
+            Dishname <FormMessage />
             </FormLabel>
             <FormControl>
                 <Input {...field} placeholder="chees pizza" className="bg-white"/>
@@ -37,7 +37,7 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
       />
       <FormField
         control={control}
-        name={`menuitem.${index}.price`}
+        name={`menuItem.${index}.price`}
         render={({field}) => (
           <FormItem>
             <FormLabel className="flex items-center gap-1">
