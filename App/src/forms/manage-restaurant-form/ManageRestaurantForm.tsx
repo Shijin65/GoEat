@@ -1,11 +1,9 @@
 import { Form } from "@/components/ui/form";
-
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import DetailSection from "./DetailSection";
-import CuisinSection from "./CuisinSection";
+import CuisineSection from "./CuisineSection";
 import { Separator } from "@/components/ui/separator";
 import MenuItemSection from "./MenuItemSection";
 import ImageSection from "./ImageSection";
@@ -26,7 +24,7 @@ const formschema = z.object({
     required_error: "deliveryTime is required !!",
     invalid_type_error: "deliveryCharge must be number !!",
   }),
-  cuisin: z
+  cuisine: z
     .array(z.string())
     .nonempty({ message: "Select atleast one item !!!" }),
   menuItem: z.array(
@@ -49,12 +47,14 @@ const ManageRestaurantForm = ({ onsave, isloding }: Props) => {
   const form = useForm<RestaurantFormData>({
     resolver: zodResolver(formschema),
     defaultValues: {
-      cuisin: [],
+      cuisine: [],
       menuItem: [{ dishname: "", price: 0 }],
     },
   });
 
   const onsubmit = (formdatajson: RestaurantFormData) => {
+
+    console.log(formdatajson)
     const formData = new FormData();
 
     formData.append("restaurantName", formdatajson.restaurantName);
@@ -65,8 +65,8 @@ const ManageRestaurantForm = ({ onsave, isloding }: Props) => {
       (formdatajson.deliveryCharge * 100).toString()
     );
     formData.append("deliveryTime", formdatajson.deliveryTime.toString());
-    formdatajson.cuisin.forEach((cuisin, index) => {
-      formData.append(`cuisin[${index}]`, cuisin);
+    formdatajson.cuisine.forEach((cuisine, index) => {
+      formData.append(`cuisine[${index}]`, cuisine);
     });
     formdatajson.menuItem.forEach((menuItem, index) => {
       formData.append(`menuItem[${index}][dishname]`, menuItem.dishname);
@@ -75,7 +75,13 @@ const ManageRestaurantForm = ({ onsave, isloding }: Props) => {
         (menuItem.price * 100).toString()
       );
     });
-    formData.append("imageFile",formdatajson.imageFile)
+    if (formdatajson.imageFile instanceof File) {
+      formData.append("imageFile", formdatajson.imageFile);
+    }
+
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
     onsave(formData)
   };
   return (
@@ -86,7 +92,7 @@ const ManageRestaurantForm = ({ onsave, isloding }: Props) => {
       >
         <DetailSection />
         <Separator className="my-2" />
-        <CuisinSection />
+        <CuisineSection />
         <Separator className="my-2" />
         <MenuItemSection />
         <Separator className="my-2" />

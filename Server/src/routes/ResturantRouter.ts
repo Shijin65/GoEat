@@ -11,7 +11,7 @@ const upload = multer({
   storage: storage,
   limits: { fileSize: 5 * 1024 * 1024 },
 });
-router.post("/",validatemyrestaurantrequest,jwtCheck,jwtparse,upload.single("imageFile"), ResturantController.CreateResturant);
+router.post("/",jwtCheck,jwtparse,upload.single("imageFile"), ResturantController.CreateResturant);
 router.get("/",async(req:Request ,res:Response)=>{
   res.status(200).json({message:"HEALTH OK!"})
 })

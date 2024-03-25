@@ -1,12 +1,13 @@
-import CuisinSection from '@/forms/manage-restaurant-form/CuisinSection';
+import { UseCreateRestaurant } from '@/Apis/RestaurantApi';
 import ManageRestaurantForm from '@/forms/manage-restaurant-form/ManageRestaurantForm';
 
 
 const ManageRestaurantPage = () => {
+  const{CreateRestaurant,isLoading}=UseCreateRestaurant()
   return (
     <>
     
-    <ManageRestaurantForm/>
+    <ManageRestaurantForm onsave={CreateRestaurant} isloding={isLoading}/>
     
     </>
   )

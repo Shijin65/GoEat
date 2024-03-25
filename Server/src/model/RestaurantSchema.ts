@@ -10,7 +10,7 @@ const RestaurantSchema = new mongoose.Schema({
   country: { type: String, require: true },
   deliveryCharge: { type: Number, require: true },
   deliveryTime: { type: Number, require: true },
-  cuisin: [{ type: String, require: true }],
+  cuisine: [{ type: String, require: true }],
   menuItem: [menuItemSchema],
   imageUrl: { type: String, require: true },
   lastupdate: { type: Date, require: true },

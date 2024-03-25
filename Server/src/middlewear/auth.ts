@@ -27,7 +27,7 @@ export const jwtparse = async (
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith("Bearer ")) {
-    return res.status(401).send();
+    return res.status(401).json({message:"authentication failed"});
   }
 
   const token = authorization.split(" ")[1];

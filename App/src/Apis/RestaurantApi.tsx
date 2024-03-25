@@ -8,21 +8,27 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const UseCreateRestaurant = () => {
   const { getAccessTokenSilently } = useAuth0();
 
-  const CreateRestaurantRequest = async (restaurantFormData: FormData):Promise<Restaurant> => {
-    const AccessToken = getAccessTokenSilently();
-    const responce = await fetch(`${API_BASE_URL}/api/goeat/restaurant`, {
+  const CreateRestaurantRequest = async (
+    restaurantFormData: FormData
+  ): Promise<Restaurant> => {
+    const AccessToken = await getAccessTokenSilently();
+    console.log(restaurantFormData);
+    const response = await fetch(`${API_BASE_URL}/api/goeat/restaurant`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${AccessToken}`,
-        "Content-Type": "application/json",
       },
       body: restaurantFormData,
     });
 
-    if (!responce.ok) {
+    if (!response.ok) {
       throw new Error("Failed to create restaurant");
     }
-    return responce.json();
+    if (response.status===409) {
+      toast.error("restaurant already exisit");
+    }
+    console.log(response);
+    return response.json();
   };
 
   const {
@@ -34,8 +40,9 @@ export const UseCreateRestaurant = () => {
   if (isSuccess) {
     toast.success("Restaurant created successfully");
   }
-  if(error){
-    toast.error("Some error occered while adding the restaurant")
+  if (error) {
+    console.log(error);
+  
   }
   return { CreateRestaurant, isLoading };
 };
