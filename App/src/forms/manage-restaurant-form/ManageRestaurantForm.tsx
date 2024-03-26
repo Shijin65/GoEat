@@ -9,6 +9,7 @@ import MenuItemSection from "./MenuItemSection";
 import ImageSection from "./ImageSection";
 import LoadingButton from "@/components/LoadingButton";
 import { Button } from "@/components/ui/button";
+import { Restaurant } from "@/types";
 
 const formschema = z.object({
   restaurantName: z.string({
@@ -41,6 +42,7 @@ type RestaurantFormData = z.infer<typeof formschema>;
 type Props = {
   onsave: (RestaurantFormData: FormData) => void;
   isloding: boolean;
+  restaurant?:Restaurant;
 };
 
 const ManageRestaurantForm = ({ onsave, isloding }: Props) => {
@@ -79,9 +81,9 @@ const ManageRestaurantForm = ({ onsave, isloding }: Props) => {
       formData.append("imageFile", formdatajson.imageFile);
     }
 
-    for (let [key, value] of formData.entries()) {
-      console.log(key, value);
-    }
+    // for (let [key, value] of formData.entries()) {
+    //   console.log(key, value);
+    // }
     onsave(formData)
   };
   return (
