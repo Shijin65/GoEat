@@ -17,7 +17,7 @@ const AuthuserMenu = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        {user?.email}
+        
         <Avatar className="size-14">
           <AvatarImage src={user?.picture} alt="@shadcn" />
           <AvatarFallback>{user?.name?.match(/\b(\w)/g)}</AvatarFallback>
