@@ -21,7 +21,7 @@ export const UseCreateUser = () => {
       body: JSON.stringify(user),
     });
     if (responce.status === 201) {
-      toast("user created successfuly")
+      toast.success("user created successfuly")
     }
     if (!responce.ok) {
       throw new Error("failed to create user");

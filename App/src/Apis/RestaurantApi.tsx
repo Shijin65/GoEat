@@ -50,7 +50,7 @@ export const UseGetCurrentRestaurant = () => {
   const { getAccessTokenSilently } = useAuth0();
 
   const GetCurrentRestaurant = async ():Promise<Restaurant> => {
-    const AccessToken = getAccessTokenSilently();
+    const AccessToken = await getAccessTokenSilently();
     const responce = await fetch(`${API_BASE_URL}/api/goeat/restaurant`, {
       method: "GET",
       headers: {
@@ -63,7 +63,7 @@ export const UseGetCurrentRestaurant = () => {
     return responce.json()
   };
 
-const {data:Restaurant, isLoading }=useQuery("fetchmyRestaurant",GetCurrentRestaurant)
+const {data:restaurant, isLoading }=useQuery("fetchmyRestaurant",GetCurrentRestaurant)
  
-  return {Restaurant,isLoading}
+  return {restaurant,isLoading}
 };

@@ -18,7 +18,6 @@ const navigate =useNavigate()
       throw new Error("unable to initialise auth")
     }
     const onRedirectcallback=(appState?:AppState,user?:User)=>{
-      console.log("USER",user)
       navigate("/auth-callback")
     }
     return(

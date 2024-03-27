@@ -12,7 +12,7 @@ function AppRouter() {
         <Route path='/' element={<Layout hero><HomePage/></Layout>}/>
         <Route path='/auth-callback' element={<AuthCallbackPage/>}/>
         <Route element={<ProtectedRoute/>}><Route path='/user-profile' element={<Layout><UserProfilePage/></Layout>}/></Route>
-        <Route path='/manage-restaurant' element={<Layout><ManageRestaurantPage/></Layout>}/>
+        <Route element={<ProtectedRoute/>}><Route path='/manage-restaurant' element={<Layout><ManageRestaurantPage/></Layout>}/></Route>
         <Route path='*' element={<Navigate to={"/"}/>}/>
     </Routes>
   )

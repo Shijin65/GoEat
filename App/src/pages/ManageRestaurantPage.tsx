@@ -4,11 +4,11 @@ import ManageRestaurantForm from '@/forms/manage-restaurant-form/ManageRestauran
 
 const ManageRestaurantPage = () => {
   const{CreateRestaurant,isLoading}=UseCreateRestaurant()
-  const {Restaurant}=UseGetCurrentRestaurant
+  const {restaurant}=UseGetCurrentRestaurant()
   return (
     <>
     
-    <ManageRestaurantForm restaurant={Restaurant} onsave={CreateRestaurant} isloding={isLoading}/>
+    <ManageRestaurantForm restaurant={restaurant} onsave={CreateRestaurant} isloding={isLoading}/>
     
     </>
   )
