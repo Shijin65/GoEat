@@ -1,6 +1,6 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
+import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
 import { Button } from "./ui/button";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Separator } from "./ui/separator";
@@ -23,7 +23,7 @@ const MobAuthusermenu = () => {
       </SheetHeader>
 
       <SheetHeader className="mt-5 p-5 ">
-      <Link to="/manage-restaurant"><Button className="hover:bg-orange-500">Manage Restaurant</Button></Link>
+      <Link to="/manage-restaurant"><Button className="hover:bg-orange-500 w-full" onClick={()=>{<SheetClose/>}}>Manage Restaurant</Button></Link>
         <Button className="hover:bg-orange-500 ">Settings</Button>
         <Separator className="my-2" />
         <Button className="hover:bg-orange-500 " onClick={() => logout()}>
