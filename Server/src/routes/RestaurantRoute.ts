@@ -1,16 +1,16 @@
 import express from "express";
+import RestaurantController from "../controller/RestaurantController";
 import { param } from "express-validator";
-import { parse } from "path/posix";
-import Restaurant from "../model/RestaurantSchema";
 
-const route = express.Router();
+const router = express.Router();
 
-route.get(
-  "/search/:city",
+router.get("/search/:city",
   param("city")
     .isString()
     .trim()
     .notEmpty()
-    .withMessage("City parametre must be a valid string"),
-    RestaurantController.searchRestaurants
+    .withMessage("city param must be a valid string"),
+  RestaurantController.searchRestaurants
 );
+
+export default router;

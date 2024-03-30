@@ -2,10 +2,10 @@ import express ,{Request,Response} from "express";
 import cors from 'cors'
 import 'dotenv/config'
 import mongoose from "mongoose";
-import UserController from "./routes/UserRoute";
 import {v2 as cloudinary} from 'cloudinary';
-import UserResturantController from "./routes/UserResturantRouter";
-
+import UserRoute from "./routes/UserRoute";
+import UserResturantRoute from "./routes/UserResturantRouter";
+import RestaurantRoute from "./routes/RestaurantRoute"
 const PORT = 4000 || process.env.PORT
 const server =express()
 server.use(express.json())
@@ -27,7 +27,7 @@ server.get("/health",async(req:Request ,res:Response)=>{
 })
 
 
-server.use("/api/my/user",UserController)
-server.use("/api/user/restaurant",UserResturantController)
-
+server.use("/api/my/user",UserRoute)
+server.use("/api/user/restaurant",UserResturantRoute)
+server.use("/api/restaurant",RestaurantRoute)
 server.listen(PORT,()=>{console.log(`server started at port : ${PORT}`)})
