@@ -1,13 +1,23 @@
 import landing from '../assets/landing.png'
 import appDownload from '../assets/appDownload.png'
+import SearchBar, { SearchForm } from '@/components/SearchBar'
+import { useNavigate } from 'react-router-dom'
 const HomePage = () => {
+    const navigate = useNavigate()
+    const handleSearchSubmit =(searchformvalue: SearchForm)=>{
+        navigate({
+            pathname:`/search/${searchformvalue.searchquery}`
+        })
+
+    }
   return (
     <div className="flex flex-col gap-12">
-        <div className="bg-white shadow-lg py-4 -mt-16 rounded-md flex flex-col text-center gap-4">
+        <div className="md:px-32 bg-white shadow-lg py-4 -mt-16 rounded-md flex flex-col text-center gap-4">
             <h1 className="text-lg sm:text-3xl md:text-5xl font-semibold text-orange-600 tracking-tight ">
                 New way of your takeaway
             </h1>
             <span className="text-md sm:text-lg md:text-xl">Hot and Cold food on your door step!</span>
+            <SearchBar placeHolder='Search by City or Town' onSubmit={handleSearchSubmit}/>
         </div>
         <div className="grid md:grid-cols-2">
             <img src={landing} alt="image" />

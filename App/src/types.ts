@@ -21,6 +21,14 @@ export type Restaurant = {
   deliveryTime: number;
   cuisine: string[];
   menuItem: menuItem[];
-  imageFile: string;
+  imageUrl: string;
   lastUpdated: string;
 };
+export type RestaurentSearchResponse ={
+  data :Restaurant[],
+  pagination:{
+    total:number,
+    page:number,
+    pages:number
+  }
+}
