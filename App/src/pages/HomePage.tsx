@@ -6,7 +6,7 @@ const HomePage = () => {
     const navigate = useNavigate()
     const handleSearchSubmit =(searchformvalue: SearchForm)=>{
         navigate({
-            pathname:`/search/${searchformvalue.searchquery}`
+            pathname:`/search/${searchformvalue.searchQuery}`
         })
 
     }
@@ -17,7 +17,7 @@ const HomePage = () => {
                 New way of your takeaway
             </h1>
             <span className="text-md sm:text-lg md:text-xl">Hot and Cold food on your door step!</span>
-            <SearchBar placeHolder='Search by City or Town' onSubmit={handleSearchSubmit}/>
+            <SearchBar placeHolder='Search by City or Town' onSubmit={handleSearchSubmit} />
         </div>
         <div className="grid md:grid-cols-2">
             <img src={landing} alt="image" />
