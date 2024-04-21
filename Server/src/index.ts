@@ -1,33 +1,33 @@
-import express ,{Request,Response} from "express";
-import cors from 'cors'
-import 'dotenv/config'
+import express, { Request, Response } from "express";
+import cors from "cors";
+import "dotenv/config";
 import mongoose from "mongoose";
-import {v2 as cloudinary} from 'cloudinary';
+import { v2 as cloudinary } from "cloudinary";
 import UserRoute from "./routes/UserRoute";
 import UserResturantRoute from "./routes/UserResturantRouter";
-import RestaurantRoute from "./routes/RestaurantRoute"
-const PORT = 4000 || process.env.PORT
-const server =express()
-server.use(express.json())
-server.use(cors())
+import RestaurantRoute from "./routes/RestaurantRoute";
 
- mongoose.connect(process.env.CONNECTION_STRING as string).then(()=>{console.log("Connected to DataBase")}) 
+const server = express();
+server.use(express.json());
+server.use(cors());
 
-
-
-cloudinary.config({ 
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
-  api_key: process.env.CLOUDINARY_API_KEY, 
-  api_secret: process.env.CLOUDINARY_SECRET_KEY, 
+mongoose.connect(process.env.CONNECTION_STRING as string).then(() => {
+  console.log("Connected to DataBase");
 });
 
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET_KEY,
+});
 
-server.get("/health",async(req:Request ,res:Response)=>{
-    res.status(200).json({message:"HEALTH OK!"})
-})
+server.get("/health", async (req: Request, res: Response) => {
+  res.status(200).json({ message: "HEALTH OK!" });
+});
 
-
-server.use("/api/my/user",UserRoute)
-server.use("/api/user/restaurant",UserResturantRoute)
-server.use("/api/restaurant",RestaurantRoute)
-server.listen(PORT,()=>{console.log(`server started at port : ${PORT}`)})
+server.use("/api/my/user", UserRoute);
+server.use("/api/user/restaurant", UserResturantRoute);
+server.use("/api/restaurant", RestaurantRoute);
+server.listen(7000, () => {
+  console.log(`server started at port : 7000`);
+});
