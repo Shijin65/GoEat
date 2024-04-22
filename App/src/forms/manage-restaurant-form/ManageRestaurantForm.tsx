@@ -27,10 +27,10 @@ const formschema = z
       required_error: "deliveryTime is required !!",
       invalid_type_error: "deliveryCharge must be number !!",
     }),
-    cuisine: z
+    cuisines: z
       .array(z.string())
       .nonempty({ message: "Select atleast one item !!!" }),
-    menuItem: z.array(
+    menuItems: z.array(
       z.object({
         dishname: z.string().min(1, "dish name is required !!"),
         price: z.coerce.number().min(1, "price is required !!"),
@@ -62,8 +62,8 @@ const ManageRestaurantForm = ({ onsave, isloding, restaurant }: Props) => {
   const form = useForm<RestaurantFormData>({
     resolver: zodResolver(formschema),
     defaultValues: {
-      cuisine: [],
-      menuItem: [{ dishname: "", price: 0 }],
+      cuisines: [],
+      menuItems: [{ dishname: "", price: 0 }],
     },
   });
   useEffect(() => {
@@ -74,7 +74,7 @@ const ManageRestaurantForm = ({ onsave, isloding, restaurant }: Props) => {
     const formattedDeliverycharge = parseInt(
       (restaurant?.deliveryCharge / 100).toFixed(2)
     );
-    const menuitemformate = restaurant.menuItem.map((item) => ({
+    const menuitemformate = restaurant.menuItems.map((item) => ({
       ...item,
       price: parseInt((item.price / 100).toFixed(2)),
     }));
@@ -82,7 +82,7 @@ const ManageRestaurantForm = ({ onsave, isloding, restaurant }: Props) => {
     const updatedRestaurant = {
       ...restaurant,
       deliveryCharge: formattedDeliverycharge,
-      menuItem: menuitemformate,
+      menuItems: menuitemformate,
     };
     form.reset(updatedRestaurant);
   }, [form, restaurant]);
@@ -99,13 +99,14 @@ const ManageRestaurantForm = ({ onsave, isloding, restaurant }: Props) => {
       (formdatajson.deliveryCharge * 100).toString()
     );
     formData.append("deliveryTime", formdatajson.deliveryTime.toString());
-    formdatajson.cuisine.forEach((cuisine, index) => {
-      formData.append(`cuisine[${index}]`, cuisine);
+
+    formdatajson.cuisines.forEach((cuisine, index) => {
+      formData.append(`cuisines[${index}]`, cuisine);
     });
-    formdatajson.menuItem.forEach((menuItem, index) => {
-      formData.append(`menuItem[${index}][dishname]`, menuItem.dishname);
+    formdatajson.menuItems.forEach((menuItem, index) => {
+      formData.append(`menuItems[${index}][dishname]`, menuItem.dishname);
       formData.append(
-        `menuItem[${index}][price]`,
+        `menuItems[${index}][price]`,
         (menuItem.price * 100).toString()
       );
     });

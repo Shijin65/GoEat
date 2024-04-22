@@ -42,10 +42,10 @@ const CuisineFilter = ({
       <div className="flex flex-col space-y-2">
         {cuisineList
           .slice(0, isExpanded ? cuisineList.length : 7)
-          .map((cuisine) => {
+          .map((cuisine,index) => {
             const isSelected = selectedCuisines?.includes(cuisine);
             return (
-              <div>
+              <div key={index}>
                 <input
                   id={`cuisine_${cuisine}`}
                   className="hidden"

@@ -22,8 +22,8 @@ const SortOptionDropdown = ({ onchange, sortOption }: props) => {
         <Button variant={"outline"} className="bg-transparent">Sort By : {sortOption}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        {SORT_OPTION.map((option) => (
-          <DropdownMenuItem className="cursor-pointer" onClick={()=>onchange(option.value)}>
+        {SORT_OPTION.map((option,index) => (
+          <DropdownMenuItem key={index} className="cursor-pointer" onClick={()=>onchange(option.value)}>
             {option.label}
           </DropdownMenuItem>
         ))}

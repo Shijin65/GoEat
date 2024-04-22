@@ -5,15 +5,12 @@ import mongoose from "mongoose";
 
 const CreateResturant = async (req: Request, res: Response) => {
   try {
+    console.log(req.body)
     const existingresturant = await Restaurant.findOne({ user: req.userId });
 
     if (existingresturant) {
       return res.status(409).json({ message: "A Restaurant already exists" });
     }
-    // const image = req.file as Express.Multer.File;
-    // const base64image = Buffer.from(image.buffer).toString("base64");
-    // const dataURI = `data:${image.mimetype};base64,${base64image}`;
-    // const uploadResponce = await cloudinary.v2.uploader.upload(dataURI);
     const imageUrl= await Upload(req.file as Express.Multer.File)
 
     const restaurant = new Restaurant(req.body);
@@ -31,7 +28,7 @@ const getrestaurant=async(req:Request , res:Response)=>{
 try {
   const restaurant = await Restaurant.findOne({ user: req.userId });
     if (!restaurant) {
-      return res.status(404).json({ message: "restaurant not found" });
+      return res.status(409).json({ message: "restaurant not found" });
     }
     res.json(restaurant);
 } catch (error) {
@@ -53,8 +50,8 @@ const UpdatemyResturant=async(req:Request , res:Response)=>{
     restaurant.country=req.body.country;
     restaurant.deliveryCharge=req.body.deliveryCharge;
     restaurant.deliveryTime=req.body.deliveryTime;
-    restaurant.cuisine=req.body.cuisine;
-    restaurant.menuItem=req.body.menuItem;
+    restaurant.cuisines=req.body.cuisines;
+    restaurant.menuItems=req.body.menuItems;
     restaurant.lastupdate=new Date()
 
       if(req.file) {

@@ -97,8 +97,8 @@ console.log(searchstate.sortOption)
           <SearchResultInfo city={city} total={results.pagination.total} />
           <SortOptionDropdown sortOption={searchstate.sortOption} onchange={(value)=>setsortOption(value)}/>
         </div>
-        {results?.data.map((restaturant) => (
-          <SearchResultCard restaturant={restaturant} />
+        {results?.data.map((restaturant,index) => (
+          <SearchResultCard key={index} restaturant={restaturant} />
         ))}
 
         <PaginationSelector

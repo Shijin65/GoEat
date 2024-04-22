@@ -5,6 +5,7 @@ import { toast } from "sonner";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
+//CREATE.....
 export const UseCreateRestaurant = () => {
   const { getAccessTokenSilently } = useAuth0();
 
@@ -46,10 +47,11 @@ export const UseCreateRestaurant = () => {
   return { CreateRestaurant, isLoading };
 };
 
+//GET UPDATED RESTAURANT
 export const UseGetCurrentRestaurant = () => {
   const { getAccessTokenSilently } = useAuth0();
 
-  const GetCurrentRestaurant = async ():Promise<Restaurant> => {
+  const GetCurrentRestaurant = async (): Promise<Restaurant> => {
     const AccessToken = await getAccessTokenSilently();
     const responce = await fetch(`${API_BASE_URL}/api/user/restaurant`, {
       method: "GET",
@@ -57,17 +59,21 @@ export const UseGetCurrentRestaurant = () => {
         Authorization: `Bearer ${AccessToken}`,
       },
     });
-    if(!responce.ok){
+    if (!responce.ok) {
       throw new Error("Failed to get restaurant");
     }
-    return responce.json()
+    return responce.json();
   };
 
-const {data:restaurant, isLoading }=useQuery("fetchmyRestaurant",GetCurrentRestaurant)
- 
-  return {restaurant,isLoading}
+  const { data: restaurant, isLoading } = useQuery(
+    "fetchmyRestaurant",
+    GetCurrentRestaurant
+  );
+
+  return { restaurant, isLoading };
 };
 
+//UPDATE RESTAURANT
 export const UseUpdateRestaurant = () => {
   const { getAccessTokenSilently } = useAuth0();
 

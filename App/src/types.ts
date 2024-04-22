@@ -8,7 +8,7 @@ export type user = {
 };
 export type menuItem = {
   _id: string;
-  name: string;
+  dishname: string;
   price: number;
 };
 export type Restaurant = {
@@ -19,8 +19,8 @@ export type Restaurant = {
   country: string;
   deliveryCharge: number;
   deliveryTime: number;
-  cuisine: string[];
-  menuItem: menuItem[];
+  cuisines: string[];
+  menuItems: menuItem[];
   imageUrl: string;
   lastUpdated: string;
 };

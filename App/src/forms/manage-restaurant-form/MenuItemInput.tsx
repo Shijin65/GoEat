@@ -22,7 +22,7 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
     <div className="flex flex-row items-end gap-4">
       <FormField
         control={control}
-        name={`menuItem.${index}.dishname`}
+        name={`menuItems.${index}.dishname`}
         render={({field}) => (
           <FormItem>
             <FormLabel className="flex items-center gap-1">
@@ -31,13 +31,14 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
             <FormControl>
                 <Input {...field} placeholder="chees pizza" className="bg-white"/>
             </FormControl>
+            <FormMessage/>
           </FormItem>
 
         )}
       />
       <FormField
         control={control}
-        name={`menuItem.${index}.price`}
+        name={`menuItems.${index}.price`}
         render={({field}) => (
           <FormItem>
             <FormLabel className="flex items-center gap-1">
@@ -46,6 +47,7 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
             <FormControl>
                 <Input {...field} placeholder="8.00" className="bg-white"/>
             </FormControl>
+            <FormMessage/>
           </FormItem>
 
         )}

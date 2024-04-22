@@ -24,10 +24,10 @@ const SearchResultCard = ({ restaturant }: Props) => {
         <span>
           <h3 className="text-xl font-bold underline">{restaturant.restaurantName}</h3>
           <div className="flex flex-row flex-wrap ">
-          {restaturant.cuisine.map((item, index) => (
-            <span className="flex">
+          {restaturant.cuisines.map((item, index) => (
+            <span key={index} className="flex">
               <span>{item}</span>
-              {index < restaturant.cuisine.length - 1 && <Dot/>}
+              {index < restaturant.cuisines.length - 1 && <Dot/>}
             </span>
           ))}
         </div>

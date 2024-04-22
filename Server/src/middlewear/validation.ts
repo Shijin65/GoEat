@@ -27,15 +27,15 @@ export const validatemyrestaurantrequest=[
   body("deliveryTime")
     .isInt({ min: 0 })
     .withMessage("Estimated delivery time must be a postivie integar"),
-  body("cuisine")
+  body("cuisines")
     .isArray()
     .withMessage("Cuisines must be an array")
     .not()
     .isEmpty()
     .withMessage("Cuisines array cannot be empty"),
-  body("menuItem").isArray().withMessage("Menu items must be an array"),
-  body("menuItem.*.dishname").notEmpty().withMessage("Menu item name is required"),
-  body("menuItem.*.price")
+  body("menuItems").isArray().withMessage("Menu items must be an array"),
+  body("menuItems.*.dishname").notEmpty().withMessage("Menu item name is required"),
+  body("menuItems.*.price")
     .isFloat({ min: 0 })
     .withMessage("Menu item price is required and must be a postive number"),
     handlervalidationerror,

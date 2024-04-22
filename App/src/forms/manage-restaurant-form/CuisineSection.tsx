@@ -1,9 +1,7 @@
 import {
-  FormControl,
   FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { cuisineList } from "@/config/Restaurant-options-config";
@@ -23,7 +21,7 @@ const CuisineSection = () => {
       <FormDescription>Select any of the cuisine!</FormDescription>
       <FormField
         control={control}
-        name="cuisine"
+        name="cuisines"
         render={({ field }) => (
           <FormItem className="grid md:grid-cols-5 sm:grid-cols-2  gap-1">
             {cuisineList.map((cuisineItem) => (

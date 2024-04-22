@@ -6,13 +6,11 @@
 	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
 	// Placeholders with the same ids are connected.
 	// Example:
-	"typescriptReactClassComponent": {
+	"typescriptComponentwithProps": {
 		"key": "typescriptReactClassComponent",
 		"prefix": "tpafe",
 		"description": "Creates a React component class with ES7 module system and TypeScript interfaces",
 		"body": [
-		  "import React from 'react'",
-		  "",
 		  "type Props = { }",
 		  "",
 		  "const ${1:${TM_FILENAME_BASE}} = ({ }: Props ) => {",
@@ -24,4 +22,17 @@
 		],
 		"scope": "typescript,typescriptreact,javascript,javascriptreact"
 	  },
+	  "ArrowFunction":	  {
+			"key": "ArrowFunction",
+			"prefix": "arf",
+			"description": "Creates a React component class with ES7 module system and TypeScript interfaces",
+			"body": [
+			  "const ${1:${TM_FILENAME_BASE}} = () => {",
+			  "",
+			  "}",
+			  "",
+			],
+			"scope": "typescript,typescriptreact,javascript,javascriptreact"
+		  
+	},
 }
