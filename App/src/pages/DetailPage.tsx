@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 import { menuItem } from "../types";
 import { UseGetRestaurant } from "@/Apis/RestaurantApi";
 import OrderSummery from "@/components/OrderSummery";
+import CheckoutButton from "@/components/CheckoutButton";
+import { UserformData } from "@/forms/user-profile-form/UserProfileForm";
 
 export type CartItem = {
   id: string;
@@ -21,7 +23,10 @@ const DetailPage = () => {
 
   const { restaurant, isLoading } = UseGetRestaurant(restaurantId);
 
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    const storedCartItem = sessionStorage.getItem(`cartItem-${restaurantId}`);
+    return storedCartItem ? JSON.parse(storedCartItem) : []
+  });
 
   const addToCart = (menuItem: menuItem) => {
     setCartItems((prevCartItems) => {
@@ -48,6 +53,11 @@ const DetailPage = () => {
           },
         ];
       }
+
+      sessionStorage.setItem(
+        `cartItem-${restaurantId}`,
+        JSON.stringify(updatedCartItems)
+      );
       return updatedCartItems;
     });
   };
@@ -77,10 +87,17 @@ const DetailPage = () => {
           },
         ];
       }
+      sessionStorage.setItem(
+        `cartItem-${restaurantId}`,
+        JSON.stringify(updatedCartItems)
+      );
       return updatedCartItems;
     });
   };
 
+  const onCheckOut =(Formdata:UserformData)=>{
+    console.log(Formdata)
+  }
   ///////
   if (isLoading || !restaurant) {
     return "Loading...";
@@ -92,10 +109,10 @@ const DetailPage = () => {
         (item) => cartItem.id !== item.id
       );
 
-      // sessionStorage.setItem(
-      //   `cartItems-${restaurantId}`,
-      //   JSON.stringify(updatedCartItems)
-      // );
+      sessionStorage.setItem(
+        `cartItems-${restaurantId}`,
+        JSON.stringify(updatedCartItems)
+      );
 
       return updatedCartItems;
     });
@@ -131,11 +148,11 @@ const DetailPage = () => {
               removeFromCart={removeFromCart}
             />
             <CardFooter>
-              {/* <CheckoutButton
-                disabled={cartItems.length === 0}
-                onCheckout={onCheckout}
-                isLoading={isCheckoutLoading}
-              /> */}
+              <CheckoutButton
+              disabled={cartItems.length === 0}
+              onCheckOut={onCheckOut}
+              // isLoading={isCheckoutLoading}
+              />
             </CardFooter>
           </Card>
         </div>

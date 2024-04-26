@@ -17,7 +17,7 @@ const navigate =useNavigate()
       throw new Error("unable to initialise auth")
     }
     const onRedirectcallback=(appState?:AppState,user?:User)=>{
-      navigate("/auth-callback")
+      navigate(appState?.returnTo||"/auth-callback")
     }
     return(
       <Auth0Provider domain={domain}

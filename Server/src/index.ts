@@ -6,6 +6,7 @@ import { v2 as cloudinary } from "cloudinary";
 import UserRoute from "./routes/UserRoute";
 import UserResturantRoute from "./routes/UserResturantRouter";
 import RestaurantRoute from "./routes/RestaurantRoute";
+import OrderRoute from "./routes/OrderRoute";
 
 const server = express();
 server.use(express.json());
@@ -28,6 +29,7 @@ server.get("/health", async (req: Request, res: Response) => {
 server.use("/api/my/user", UserRoute);
 server.use("/api/user/restaurant", UserResturantRoute);
 server.use("/api/restaurant", RestaurantRoute);
+server.use("/api/order",OrderRoute)
 server.listen(7000, () => {
   console.log(`server started at port : 7000`);
 });
