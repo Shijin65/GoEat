@@ -3,7 +3,7 @@ import strip, { Stripe } from "stripe";
 import Restaurant, { MenuItemType } from "../model/RestaurantSchema";
 
 const STRIPE = new strip(process.env.STRIP_SECRET_KEY as string);
-const FRONTEND_URL = process.env.FRONTEND_URL;
+const FRONTEND_URL = process.env.FRONTEND_BASEURL as string;
 
 type CheckoutSession = {
   cartItems: {
@@ -16,11 +16,13 @@ type CheckoutSession = {
     name: string;
     address: string;
     city: string;
+    country:string
   };
   restaurantId: string;
 };
 const createCheckoutSession = async (req: Request, res: Response) => {
   try {
+    console.log(req.body)
     const CheckoutSessionrequest: CheckoutSession = req.body;
     const restaurant = await Restaurant.findById(
       CheckoutSessionrequest.restaurantId
@@ -58,10 +60,12 @@ const creatLineItem = (
   menuitems: MenuItemType[]
 ) => {
   const lineitem = CheckoutSession.cartItems.map((cartitem) => {
+    console.log(cartitem.menuItemid)
     const menuitem = menuitems.find(
-      (item) => item._Id.toString() === cartitem.menuItemid.toString()
+      (item) => item._id.toString() === cartitem.menuItemid.toString()
     );
     if (!menuitem) {
+
       throw new Error(`MenuItem Not Found ${cartitem.menuItemid}`);
     }
     const Line_Item: Stripe.Checkout.SessionCreateParams.LineItem = {

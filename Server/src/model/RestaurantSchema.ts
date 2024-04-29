@@ -1,6 +1,6 @@
 import mongoose, { InferSchemaType } from "mongoose";
 const menuItemSchema = new mongoose.Schema({
-  _Id: {
+  _id: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     default: () => new mongoose.Types.ObjectId(),
@@ -21,7 +21,7 @@ const RestaurantSchema = new mongoose.Schema({
   cuisines: [{ type: String, required: true }],
   menuItems: [menuItemSchema],
   imageUrl: { type: String, required: true },
-  lastupdate: { type: Date, required: true },
+  lastupdate: { type: Date,},
 });
 
 const Restaurant = mongoose.model("Restaurant", RestaurantSchema);

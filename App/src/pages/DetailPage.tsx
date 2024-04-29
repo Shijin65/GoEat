@@ -10,6 +10,7 @@ import { UseGetRestaurant } from "@/Apis/RestaurantApi";
 import OrderSummery from "@/components/OrderSummery";
 import CheckoutButton from "@/components/CheckoutButton";
 import { UserformData } from "@/forms/user-profile-form/UserProfileForm";
+import { useCreateCheckoutSession } from "@/Apis/OrderApis";
 
 export type CartItem = {
   id: string;
@@ -23,9 +24,10 @@ const DetailPage = () => {
 
   const { restaurant, isLoading } = UseGetRestaurant(restaurantId);
 
+  const {CreateCheckoutsession,isLoading :isCheckoutLoading}=useCreateCheckoutSession()
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     const storedCartItem = sessionStorage.getItem(`cartItem-${restaurantId}`);
-    return storedCartItem ? JSON.parse(storedCartItem) : []
+    return storedCartItem ? JSON.parse(storedCartItem) : [];
   });
 
   const addToCart = (menuItem: menuItem) => {
@@ -95,9 +97,6 @@ const DetailPage = () => {
     });
   };
 
-  const onCheckOut =(Formdata:UserformData)=>{
-    console.log(Formdata)
-  }
   ///////
   if (isLoading || !restaurant) {
     return "Loading...";
@@ -118,6 +117,28 @@ const DetailPage = () => {
     });
   };
 
+  const onCheckOut = async(Formdata: UserformData) => {
+    console.log(Formdata);
+
+    const checkoutdata = {
+      cartItems: cartItems.map((cartItem) => ({
+        menuItemid: cartItem.id,
+        dishname: cartItem.dishname,
+        quantity:cartItem.quantity.toString()
+      })),
+      deliveryDetails:{
+        email:Formdata.email as string,
+        name:Formdata.name,
+        address:Formdata.address1,
+        city:Formdata.city,
+        country:Formdata.country
+      },
+      restaurantId:restaurant._id
+    };
+    const data = await CreateCheckoutsession(checkoutdata)
+    window.location.href=data.url
+    console.log(data)
+  };
   return (
     <div className="flex flex-col gap-10">
       <AspectRatio ratio={16 / 5}>
@@ -149,9 +170,9 @@ const DetailPage = () => {
             />
             <CardFooter>
               <CheckoutButton
-              disabled={cartItems.length === 0}
-              onCheckOut={onCheckOut}
-              // isLoading={isCheckoutLoading}
+                disabled={cartItems.length === 0}
+                onCheckOut={onCheckOut}
+                isLoading={isCheckoutLoading}
               />
             </CardFooter>
           </Card>
