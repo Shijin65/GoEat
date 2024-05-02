@@ -6,12 +6,13 @@ const orderSchema = new mongoose.Schema({
   deliveryDetails: {
     email: { type: String, required: true },
     name: { type: String, required: true },
-    addressLine1: { type: String, required: true },
+    address: { type: String, required: true },
     city: { type: String, required: true },
+    country:{ type: String, required: true },
   },
   cartItems: [
     {
-      menuItemId: { type: String, required: true },
+      menuItemid: { type: String, required: true },
       quantity: { type: Number, required: true },
       dishname: { type: String, required: true },
     },

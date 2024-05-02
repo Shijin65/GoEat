@@ -13,16 +13,20 @@ import { Separator } from "./ui/separator";
 import { Link } from "react-router-dom";
 
 const AuthuserMenu = () => {
-  const { user,logout } = useAuth0();
+  const { user, logout } = useAuth0();
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        
-        <Avatar className="size-14">
-          <AvatarImage src={user?.picture} alt="@shadcn" />
-          <AvatarFallback>{user?.name?.match(/\b(\w)/g)}</AvatarFallback>
-        </Avatar>
-      </DropdownMenuTrigger>
+      <div className="flex justify-center items-center gap-5 text-lg font-bold " >
+        {" "}
+        <Link to={"/order-status"} className="hover:text-orange-500">   Order Status</Link>
+        <DropdownMenuTrigger>
+          <Avatar className="size-14 hover:shadow-md">
+            <AvatarImage src={user?.picture} alt="@shadcn" />
+            <AvatarFallback>{user?.name?.match(/\b(\w)/g)}</AvatarFallback>
+          </Avatar>
+        </DropdownMenuTrigger>
+      </div>
+
       <DropdownMenuContent className="container w-96 hidden md:block md:me-10 lg:me-16 shadow-lg">
         <DropdownMenuGroup className="flex flex-col mt-2 ">
           <DropdownMenuLabel className="text-center self-center">
@@ -36,8 +40,12 @@ const AuthuserMenu = () => {
         </DropdownMenuGroup>
 
         <DropdownMenuGroup className="mt-5 p-5">
-          <Link to={"/user-profile"}><DropdownMenuItem>Profile</DropdownMenuItem></Link>
-          <Link to={"/Manage-Restaurant"}><DropdownMenuItem>Manage Restaurant</DropdownMenuItem></Link>
+          <Link to={"/user-profile"}>
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+          </Link>
+          <Link to={"/Manage-Restaurant"}>
+            <DropdownMenuItem>Manage Restaurant</DropdownMenuItem>
+          </Link>
           <DropdownMenuItem>
             Settings
             <DropdownMenuShortcut>⇧⌘S</DropdownMenuShortcut>

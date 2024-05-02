@@ -6,7 +6,7 @@
     "country": "UK",
     "deliveryCharge": 210,
     "deliveryTime": 32,
-    "cuisine": [
+    "cuisines": [
       "Indian",
       "American",
       "Tacos",
@@ -59,7 +59,7 @@
     "country": "UK",
     "deliveryCharge": 150,
     "deliveryTime": 21,
-    "cuisine": [
+    "cuisines": [
       "Tapas",
       "Greek",
       "American",
@@ -112,7 +112,7 @@
     "country": "UK",
     "deliveryCharge": 420,
     "deliveryTime": 23,
-    "cuisine": [
+    "cuisines": [
       "Japanese",
       "French",
       "Chinese",
@@ -165,7 +165,7 @@
     "country": "UK",
     "deliveryCharge": 360,
     "deliveryTime": 26,
-    "cuisine": [
+    "cuisines": [
       "Noodles",
       "Cafe",
       "Pasta",
@@ -218,7 +218,7 @@
     "country": "UK",
     "deliveryCharge": 100,
     "deliveryTime": 38,
-    "cuisine": [
+    "cuisines": [
       "Cafe",
       "Healthy",
       "Chinese",
@@ -271,7 +271,7 @@
     "country": "UK",
     "deliveryCharge": 222,
     "deliveryTime": 24,
-    "cuisine": [
+    "cuisines": [
       "Pasta",
       "Japanese",
       "Mexican",
@@ -324,7 +324,7 @@
     "country": "UK",
     "deliveryCharge": 266,
     "deliveryTime": 54,
-    "cuisine": [
+    "cuisines": [
       "American",
       "Cafe",
       "Spanish",
@@ -377,7 +377,7 @@
     "country": "UK",
     "deliveryCharge": 339,
     "deliveryTime": 32,
-    "cuisine": [
+    "cuisines": [
       "Organic",
       "American",
       "Tapas",
@@ -430,7 +430,7 @@
     "country": "UK",
     "deliveryCharge": 100,
     "deliveryTime": 38,
-    "cuisine": [
+    "cuisines": [
       "Cafe",
       "Salads",
       "Tacos",
@@ -483,7 +483,7 @@
     "country": "UK",
     "deliveryCharge": 141,
     "deliveryTime": 51,
-    "cuisine": [
+    "cuisines": [
       "Tacos",
       "Sushi",
       "Spanish",
@@ -536,7 +536,7 @@
     "country": "UK",
     "deliveryCharge": 350,
     "deliveryTime": 25,
-    "cuisine": [
+    "cuisines": [
       "Indian",
       "Spanish",
       "Seafood",
@@ -589,7 +589,7 @@
     "country": "UK",
     "deliveryCharge": 165,
     "deliveryTime": 19,
-    "cuisine": [
+    "cuisines": [
       "Salads",
       "Steak",
       "Organic",
@@ -642,7 +642,7 @@
     "country": "UK",
     "deliveryCharge": 209,
     "deliveryTime": 56,
-    "cuisine": [
+    "cuisines": [
       "Japanese",
       "Breakfast",
       "French",
@@ -695,7 +695,7 @@
     "country": "UK",
     "deliveryCharge": 480,
     "deliveryTime": 24,
-    "cuisine": [
+    "cuisines": [
       "Organic",
       "Pasta",
       "Italian",
@@ -748,7 +748,7 @@
     "country": "UK",
     "deliveryCharge": 332,
     "deliveryTime": 22,
-    "cuisine": [
+    "cuisines": [
       "Healthy",
       "Cafe",
       "Italian",
@@ -801,7 +801,7 @@
     "country": "UK",
     "deliveryCharge": 163,
     "deliveryTime": 41,
-    "cuisine": [
+    "cuisines": [
       "Steak",
       "Mexican",
       "Sushi",
@@ -854,7 +854,7 @@
     "country": "UK",
     "deliveryCharge": 216,
     "deliveryTime": 58,
-    "cuisine": [
+    "cuisines": [
       "Desserts",
       "Japanese",
       "Tapas",
@@ -907,7 +907,7 @@
     "country": "UK",
     "deliveryCharge": 358,
     "deliveryTime": 43,
-    "cuisine": [
+    "cuisines": [
       "Breakfast",
       "Chinese",
       "Spanish",
@@ -960,7 +960,7 @@
     "country": "UK",
     "deliveryCharge": 100,
     "deliveryTime": 36,
-    "cuisine": [
+    "cuisines": [
       "Pizza",
       "Italian",
       "Cafe",
@@ -1013,7 +1013,7 @@
     "country": "UK",
     "deliveryCharge": 368,
     "deliveryTime": 57,
-    "cuisine": [
+    "cuisines": [
       "Chinese",
       "Steak",
       "Tapas",
@@ -1066,7 +1066,7 @@
     "country": "UK",
     "deliveryCharge": 265,
     "deliveryTime": 32,
-    "cuisine": [
+    "cuisines": [
       "Steak",
       "Japanese",
       "Pasta",
@@ -1119,7 +1119,7 @@
     "country": "UK",
     "deliveryCharge": 322,
     "deliveryTime": 16,
-    "cuisine": [
+    "cuisines": [
       "Pasta",
       "Sushi",
       "Greek",
@@ -1172,7 +1172,7 @@
     "country": "UK",
     "deliveryCharge": 202,
     "deliveryTime": 57,
-    "cuisine": [
+    "cuisines": [
       "French",
       "Spanish",
       "Burgers",
@@ -1225,7 +1225,7 @@
     "country": "UK",
     "deliveryCharge": 148,
     "deliveryTime": 27,
-    "cuisine": [
+    "cuisines": [
       "Japanese",
       "Desserts",
       "Breakfast",
@@ -1278,7 +1278,7 @@
     "country": "UK",
     "deliveryCharge": 490,
     "deliveryTime": 25,
-    "cuisine": [
+    "cuisines": [
       "Noodles",
       "Pizza",
       "Greek",
@@ -1331,7 +1331,7 @@
     "country": "UK",
     "deliveryCharge": 100,
     "deliveryTime": 19,
-    "cuisine": [
+    "cuisines": [
       "Organic",
       "Spanish",
       "BBQ",
@@ -1384,7 +1384,7 @@
     "country": "UK",
     "deliveryCharge": 100,
     "deliveryTime": 29,
-    "cuisine": [
+    "cuisines": [
       "Japanese",
       "Vegan",
       "Cafe",

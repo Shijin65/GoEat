@@ -1,3 +1,5 @@
+import { User } from "@auth0/auth0-react";
+
 export type user = {
   _id: string;
   name: string;
@@ -31,4 +33,26 @@ export type RestaurentSearchResponse ={
     page:number,
     pages:number
   }
+}
+export type orderstatus ="placed"| "paid"| "inProgress"| "outForDelivery"| "delivered"
+export type Order ={
+  _id:string;
+  user:User;
+  restaurant :Restaurant;
+  cartItems: {
+    menuItemid: string;
+    dishname: string;
+    quantity: string;
+  }[];
+  deliveryDetails: {
+    email: string;
+    name: string;
+    address: string;
+    city: string;
+    country: string;
+  };
+  totalAmonut:number;
+  status:orderstatus;
+  createdAt:string;
+  restaurantId:string;
 }

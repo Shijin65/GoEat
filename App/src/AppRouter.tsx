@@ -7,6 +7,7 @@ import ProtectedRoute from './Auth/ProtectedRoute'
 import ManageRestaurantPage from './pages/ManageRestaurantPage'
 import SearchPage from './pages/SearchPage'
 import DetailPage from './pages/DetailPage'
+import OrderStatuspage from './pages/OrderStatuspage'
 
 function AppRouter() {
   return (
@@ -16,6 +17,7 @@ function AppRouter() {
         <Route path='/search/:city' element={<Layout><SearchPage/></Layout>}/>
         <Route path='/details/:restaurantId' element={<Layout><DetailPage/></Layout>}/>
         <Route element={<ProtectedRoute/>}><Route path='/user-profile' element={<Layout><UserProfilePage/></Layout>}/></Route>
+        <Route element={<ProtectedRoute/>}><Route path='/order-status' element={<Layout><OrderStatuspage/></Layout>}/></Route>
         <Route element={<ProtectedRoute/>}><Route path='/manage-restaurant' element={<Layout><ManageRestaurantPage/></Layout>}/></Route>
         <Route path='*' element={<Navigate to={"/"}/>}/>
     </Routes>

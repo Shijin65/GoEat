@@ -9,7 +9,7 @@ import RestaurantRoute from "./routes/RestaurantRoute";
 import OrderRoute from "./routes/OrderRoute";
 
 const server = express();
-server.use(express.json());
+
 server.use(cors());
 
 mongoose.connect(process.env.CONNECTION_STRING as string).then(() => {
@@ -21,6 +21,11 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_SECRET_KEY,
 });
+
+
+server.use("/api/order/checkout/webhook", express.raw({type:"*/*"}))
+
+server.use(express.json());
 
 server.get("/health", async (req: Request, res: Response) => {
   res.status(200).json({ message: "HEALTH OK!" });
