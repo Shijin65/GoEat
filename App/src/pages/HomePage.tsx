@@ -2,14 +2,22 @@ import landing from '../assets/landing.png'
 import appDownload from '../assets/appDownload.png'
 import SearchBar, { SearchForm } from '@/components/SearchBar'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 const HomePage = () => {
+    const {user}=useAuth0()
     const navigate = useNavigate()
     const handleSearchSubmit =(searchformvalue: SearchForm)=>{
         navigate({
             pathname:`/search/${searchformvalue.searchQuery}`
         })
-
     }
+    useEffect(()=>{
+        const currentuser = localStorage.getItem("currentUser")
+        if(currentuser){
+                // user=currentuser
+        }
+    },[])
   return (
     <div className="flex flex-col gap-12">
         <div className="md:px-32 bg-white shadow-lg py-4 -mt-16 rounded-md flex flex-col text-center gap-4">

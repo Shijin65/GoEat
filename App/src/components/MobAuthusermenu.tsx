@@ -4,10 +4,15 @@ import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
 import { Button } from "./ui/button";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Separator } from "./ui/separator";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const MobAuthusermenu = () => {
   const navigate= useNavigate()
     const {  user ,logout } = useAuth0();
+
+    const closesheet =()=>{
+      <SheetClose/>
+      navigate("/order-status")
+    }
   return (
     <SheetContent className="flex flex-col justify-between">
       <SheetHeader className="flex flex-col mt-2 justify-center items-center">
@@ -24,7 +29,7 @@ const MobAuthusermenu = () => {
 
       <SheetHeader className="mt-5 p-5 ">
       <Link to="/manage-restaurant"><Button className="hover:bg-orange-500 w-full" onClick={()=>{<SheetClose/>}}>Manage Restaurant</Button></Link>
-      <Link to="/order-status"><Button className="hover:bg-orange-500 w-full" onClick={()=>{<SheetClose/>}}>Order Status</Button></Link>
+      <Button className="hover:bg-orange-500 w-full" onClick={closesheet}>Order Status</Button>
 
         <Button className="hover:bg-orange-500 ">Settings</Button>
         <Separator className="my-2" />

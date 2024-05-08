@@ -51,7 +51,7 @@ export type Order ={
     city: string;
     country: string;
   };
-  totalAmonut:number;
+  totalAmount:number;
   status:orderstatus;
   createdAt:string;
   restaurantId:string;

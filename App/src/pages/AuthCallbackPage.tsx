@@ -9,9 +9,12 @@ const AuthCallbackPage = () => {
   const { user } = useAuth0();
   const { CreateUser } = UseCreateUser();
   useEffect(() => {
+    console.log(user)
     if (user?.sub && user?.email && !hascreateduser.current) {
+      localStorage.setItem("currentUser",JSON.stringify(user))
       CreateUser({ auth0Id: user.sub, email: user.email });
       hascreateduser.current = true;
+      
     }
     navigate("/")
   }, [CreateUser,user]);
