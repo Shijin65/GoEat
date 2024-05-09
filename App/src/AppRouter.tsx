@@ -12,7 +12,7 @@ import OrderStatuspage from './pages/OrderStatuspage'
 function AppRouter() {
   return (
     <Routes>
-        <Route path='/' element={<Layout hero><HomePage/></Layout>}/>
+        <Route path='/' element={<Layout hero loader><HomePage/></Layout>}/>
         <Route path='/auth-callback' element={<AuthCallbackPage/>}/>
         <Route path='/search/:city' element={<Layout><SearchPage/></Layout>}/>
         <Route path='/details/:restaurantId' element={<Layout><DetailPage/></Layout>}/>

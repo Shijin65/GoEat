@@ -8,8 +8,6 @@ type Props = {
 
 const OrderStatusDetails = ({ order}: Props ) => {
     if (!order) return null;
-    console.log(order)
-    console.log(typeof(order.totalAmount))
 return <div className=" space-y-5">
     <div className="flex flex-col">
             <span className="font-bold">Delivery To :</span>
@@ -24,7 +22,7 @@ return <div className=" space-y-5">
     <Separator/>
     <div className="flex ">
             <span className="font-bold">Total : </span>
-            <span>{order.totalAmount}</span>
+            <span> ₹ {(order.totalAmount / 100).toFixed(2)}</span>
     </div>
 </div>
 }

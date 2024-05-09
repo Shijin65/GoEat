@@ -1,5 +1,6 @@
 import { UseSearchRestaurant } from "@/Apis/RestaurantApi";
 import CuisineFilter from "@/components/CuisineFilter";
+import LoadingSpinner from "@/components/LoadingSpinner";
 import PaginationSelector from "@/components/PaginationSelector";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
 import SearchResultCard from "@/components/SearchResultCard";
@@ -65,12 +66,7 @@ console.log(searchstate.sortOption)
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-[60vh] ">
-        <span className="flex items-center gap-2 text-lg text-blue-500 tracking-tighter ">
-          <ClipLoader color="#368dd6" size={25} />
-          <h3 className="animate-pulse">Loading...</h3>
-        </span>
-      </div>
+     <LoadingSpinner/>
     );
   }
   if (!results?.data || !city) {

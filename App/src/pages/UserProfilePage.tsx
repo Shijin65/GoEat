@@ -1,12 +1,13 @@
 import UserProfileForm from "@/forms/user-profile-form/UserProfileForm";
 import {UseGetCurrentUser, UseUpdateUser} from '@/Apis/UserApi'
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 const UserProfilePage = () => {
   const {isLoading:getloading,currentUser}=UseGetCurrentUser()
   const {isLoading:updateloading,updateuser}=UseUpdateUser()
 
   if (getloading) {
-    return(<span>loading....</span>)
+    return <LoadingSpinner/>
   }
 
   if(!currentUser){

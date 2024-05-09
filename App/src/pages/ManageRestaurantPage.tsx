@@ -4,9 +4,11 @@ import {
   UseUpdateRestaurant,
   useGetRestaurantOrders,
 } from "@/Apis/MyRestaurantApi";
+import LoadingSpinner from "@/components/LoadingSpinner";
 import OrderItemCard from "@/components/OrderItemCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ManageRestaurantForm from "@/forms/manage-restaurant-form/ManageRestaurantForm";
+
 
 const ManageRestaurantPage = () => {
   const { CreateRestaurant, isLoading: Createloading } = UseCreateRestaurant();
@@ -14,7 +16,7 @@ const ManageRestaurantPage = () => {
   const { UpdateRestaurant, isLoading: updateloading } = UseUpdateRestaurant();
   const { orders, isLoading } = useGetRestaurantOrders();
   if (isLoading) {
-    return <span>...loading</span>
+    return <LoadingSpinner/>
   }
   console.log(orders)
 

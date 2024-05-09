@@ -28,7 +28,7 @@ const OrderItemCard = ({ order }: Props) => {
     return `${hours}:${paddedmins}`;
   };
   return (
-    <Card>
+    <Card className="mt-5">
       <CardHeader>
         <CardTitle className="flex flex-wrap justify-between mb-4 gap-4">
           <div>
@@ -73,11 +73,12 @@ const OrderItemCard = ({ order }: Props) => {
             value={status}
             disabled={isLoading}
             onValueChange={(value) => handlestatuschange(value as orderstatus)}
+            
           >
             <SelectTrigger id="status" className="w-[180px]">
               <SelectValue placeholder="status" />
             </SelectTrigger>
-            <SelectContent position="popper">
+            <SelectContent position="popper" className="bg-white">
               {ORDER_STATUS.map((status) => (
                 <SelectItem value={status.value}>{status.label}</SelectItem>
               ))}

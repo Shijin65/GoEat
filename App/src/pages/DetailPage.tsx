@@ -11,6 +11,7 @@ import OrderSummery from "@/components/OrderSummery";
 import CheckoutButton from "@/components/CheckoutButton";
 import { UserformData } from "@/forms/user-profile-form/UserProfileForm";
 import { useCreateCheckoutSession } from "@/Apis/OrderApis";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export type CartItem = {
   id: string;
@@ -99,7 +100,7 @@ const DetailPage = () => {
 
   ///////
   if (isLoading || !restaurant) {
-    return "Loading...";
+    return (<LoadingSpinner/>);
   }
 
   const removeFromCart = (cartItem: CartItem) => {

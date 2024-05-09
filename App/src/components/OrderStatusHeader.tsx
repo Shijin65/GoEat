@@ -18,16 +18,25 @@ const OrderStatusHeader = ({ order }: Props) => {
   };
 
   const getorderinfo = () => {
-    return (ORDER_STATUS.find((Ord) => Ord.value === order.status) || ORDER_STATUS[0])
-    
+    return (
+      ORDER_STATUS.find((Ord) => Ord.value === order.status) || ORDER_STATUS[0]
+    );
   };
+
   return (
     <>
       <h1 className="text-4xl font-bold tracking-tighter flex flex-col md:flex-row  gap-5 md:justify-between">
         <span>Order Status : {getorderinfo().label}</span>
         <span>Expected by :{getExpectedDelivery()}</span>
       </h1>
-      <Progress className="animate-pulse" value={getorderinfo().progressValue} />
+      <Progress
+        className={`${
+          getorderinfo().label === "Delivered"
+            ? "animate-none "
+            : "animate-pulse"
+        }`}
+        value={getorderinfo().progressValue}
+      />
     </>
   );
 };
