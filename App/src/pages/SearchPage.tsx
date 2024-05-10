@@ -8,7 +8,7 @@ import SearchResultInfo from "@/components/SearchResultInfo";
 import SortOptionDropdown from "@/components/SortOptionDropdown";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { ClipLoader } from "react-spinners";
+
 export type SearchState = {
   searchQuery: string;
   page: number;
@@ -25,7 +25,7 @@ const SearchPage = () => {
     sortOption: "bestMatch",
   });
   const [isExpanded, setIsExpanded] = useState<Boolean>(false);
-console.log(searchstate.sortOption)
+  console.log(searchstate.sortOption);
   const setsortOption = (sortOption: string) => {
     setSearchState((prevstate) => ({
       ...prevstate,
@@ -65,9 +65,7 @@ console.log(searchstate.sortOption)
   };
 
   if (isLoading) {
-    return (
-     <LoadingSpinner/>
-    );
+    return <LoadingSpinner />;
   }
   if (!results?.data || !city) {
     return <span>No Result Found</span>;
@@ -91,9 +89,12 @@ console.log(searchstate.sortOption)
         />
         <div className="flex flex-1 flex-col gap-3 md:flex-row justify-between">
           <SearchResultInfo city={city} total={results.pagination.total} />
-          <SortOptionDropdown sortOption={searchstate.sortOption} onchange={(value)=>setsortOption(value)}/>
+          <SortOptionDropdown
+            sortOption={searchstate.sortOption}
+            onchange={(value) => setsortOption(value)}
+          />
         </div>
-        {results?.data.map((restaturant,index) => (
+        {results?.data.map((restaturant, index) => (
           <SearchResultCard key={index} restaturant={restaturant} />
         ))}
 
